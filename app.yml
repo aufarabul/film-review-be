@@ -1,5 +1,5 @@
 runtime: nodejs20
-service: film-review
+service: film-review-be
 
 predeploy:
   - npx install
