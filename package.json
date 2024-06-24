@@ -18,7 +18,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "gcp-buld": "npx install && npx sequelize db:migrate"
   },
   "keywords": [],
   "author": "",

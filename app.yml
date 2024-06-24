@@ -1,6 +1,2 @@
 runtime: nodejs20
 service: film-review-be
-
-predeploy:
-  - npx install
-  - npx sequelize db:migrate
