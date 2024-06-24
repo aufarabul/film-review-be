@@ -1,6 +1,0 @@
-runtime: nodejs20
-
-# service: film-review
-
-vpc_access_connector:
-  name: "projects/film-review-427406/locations/asia-southeast2/connectors/connect-to-sql"
