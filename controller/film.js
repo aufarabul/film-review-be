@@ -80,6 +80,7 @@ exports.addFilm = async (req, res, next) => {
       sutradara,
       tahun,
       image_film,
+      description,
     });
 
     res.status(201).json({
@@ -94,7 +95,7 @@ exports.addFilm = async (req, res, next) => {
 exports.updateFilm = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { nama_film, genre_id, sutradara, tahun } = req.body;
+    const { nama_film, genre_id, sutradara, tahun, description } = req.body;
     const { image_film } = req.files;
     if (!nama_film || nama_film == "") {
       return next({
@@ -127,6 +128,7 @@ exports.updateFilm = async (req, res, next) => {
       sutradara,
       tahun,
       image_film,
+      description,
     });
 
     res.status(200).json({

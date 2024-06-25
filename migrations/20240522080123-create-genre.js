@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      film_id: {
-        type: Sequelize.INTEGER,
-      },
       nama_genre: {
         type: Sequelize.STRING,
       },

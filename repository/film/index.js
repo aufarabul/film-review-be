@@ -68,19 +68,21 @@ exports.addFilm = async (payload) => {
 
 exports.updateFilm = async (id, payload) => {
   try {
-    if (payload.image) {
+    if (payload.image_film) {
       // Upload image to Cloudinary
-      const { image } = payload;
+      const { image_film } = payload;
 
       // Create a unique filename
-      image.publicId = crypto.randomBytes(16).toString("hex");
+      image_film.publicId = crypto.randomBytes(16).toString("hex");
 
       // Rename the file
-      image.name = `${image.publicId}${path.parse(image.name).ext}`;
+      image_film.name = `${image_film.publicId}${
+        path.parse(image_film.name).ext
+      }`;
 
       // Process to upload image
-      const imageUpload = await uploader(image);
-      payload.image = imageUpload.secure_url;
+      const imageUpload = await uploader(image_film);
+      payload.image_film = imageUpload.secure_url;
     }
 
     // Update film in the database

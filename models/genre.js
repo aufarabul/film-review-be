@@ -9,14 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // genre.hasMany(models.film, { foreignKey: "film_id" });
-      genre.belongsTo(models.film, { foreignKey: "film_id" });
+      genre.hasMany(models.film, { foreignKey: "genre_id" });
+      genre.belongsTo(models.film, { foreignKey: "id" });
     }
   }
   genre.init(
     {
       nama_genre: DataTypes.STRING,
-      film_id: DataTypes.INTEGER,
       deletedAt: DataTypes.DATE,
     },
     {
