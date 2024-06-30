@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       description: DataTypes.STRING,
       image_film: DataTypes.TEXT,
       deletedAt: DataTypes.DATE,
+      rating: DataTypes.DECIMAL(2, 2),
     },
     {
       sequelize,
