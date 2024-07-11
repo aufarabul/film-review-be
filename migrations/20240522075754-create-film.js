@@ -27,11 +27,15 @@ module.exports = {
       },
       description: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       image_film: {
         allowNull: false,
         type: Sequelize.TEXT,
+      },
+      id_tmdb: {
+        allowNull: true,
+        type: Sequelize.STRING,
       },
       deletedAt: {
         type: Sequelize.DATE,
