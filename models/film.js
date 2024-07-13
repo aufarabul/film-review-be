@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       description: DataTypes.TEXT,
       image_film: DataTypes.TEXT,
       id_tmdb: DataTypes.STRING,
+      type: DataTypes.STRING,
       deletedAt: DataTypes.DATE,
       rating: DataTypes.DECIMAL(2, 2),
     },
