@@ -35,8 +35,15 @@ exports.getFilmbyId = async (req, res, next) => {
 
 exports.addFilm = async (req, res, next) => {
   try {
-    const { nama_film, genre_id, sutradara, tahun, description, id_tmdb } =
-      req.body;
+    const {
+      nama_film,
+      genre_id,
+      sutradara,
+      tahun,
+      description,
+      id_tmdb,
+      type,
+    } = req.body;
     const { image_film } = req.files;
     if (!nama_film || nama_film == "") {
       return next({
@@ -74,6 +81,12 @@ exports.addFilm = async (req, res, next) => {
         statusCode: 400,
       });
     }
+    if (!type || type == "") {
+      return next({
+        message: "type must be provided!",
+        statusCode: 400,
+      });
+    }
 
     const data = await filmUsecase.addFilm({
       nama_film,
@@ -83,6 +96,7 @@ exports.addFilm = async (req, res, next) => {
       image_film,
       description,
       id_tmdb,
+      type,
     });
 
     res.status(201).json({
@@ -155,6 +169,7 @@ exports.updateFilm = async (req, res, next) => {
       description,
       id_tmdb,
       image_film,
+      type,
     } = req.body;
 
     // Build an update object with only the provided properties
@@ -165,6 +180,7 @@ exports.updateFilm = async (req, res, next) => {
     if (tahun) updateData.tahun = tahun;
     if (description) updateData.description = description;
     if (id_tmdb) updateData.id_tmdb = id_tmdb;
+    if (type) updateData.type = type;
     if (image_film) updateData.image_film = image_film; // Handle file upload logic separately
 
     // Validate required fields (optional, uncomment if needed)
