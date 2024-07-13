@@ -7,7 +7,14 @@ exports.getGenres = async () => {
   try {
     // Fetch genres with eager loading for genre and ulasan models
     const data = await genre.findAll({
-      include: [{ model: film }],
+      include: [
+        {
+          model: film,
+          include: {
+            model: ulasan, // Assuming your review model is named 'Ulasan'
+          },
+        },
+      ],
     });
 
     // Return the fetched data
@@ -23,7 +30,14 @@ exports.getGenrebyId = async (id) => {
     // Fetch genre by id with eager loading for genre and ulasan models
     const data = await genre.findOne({
       where: { id },
-      include: [{ model: film }],
+      include: [
+        {
+          model: film,
+          include: {
+            model: ulasan, // Assuming your review model is named 'Ulasan'
+          },
+        },
+      ],
     });
 
     if (!data) {
