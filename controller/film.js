@@ -169,10 +169,9 @@ exports.updateFilm = async (req, res, next) => {
       tahun,
       description,
       id_tmdb,
-      image_film,
       type,
     } = req.body;
-
+    const { image_film } = req?.files;
     // Build an update object with only the provided properties
     const updateData = {};
     if (nama_film) updateData.nama_film = nama_film;
