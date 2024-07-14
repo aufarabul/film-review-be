@@ -2,7 +2,8 @@ const filmUsecase = require("../usecase/film");
 
 exports.getFilms = async (req, res, next) => {
   try {
-    const data = await filmUsecase.getFilms();
+    const { name } = req?.query;
+    const data = await filmUsecase.getFilms(name);
 
     res.status(200).json({
       message: "Successs",

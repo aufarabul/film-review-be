@@ -1,7 +1,7 @@
 const FilmsRepo = require("../../repository/film");
 
-exports.getFilms = async () => {
-  const data = await FilmsRepo.getFilms();
+exports.getFilms = async (name) => {
+  const data = await FilmsRepo.getFilms(name);
   return data;
 };
 

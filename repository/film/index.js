@@ -3,13 +3,23 @@ const path = require("path");
 const { uploader } = require("../../helper/cloudinary");
 const { film, genre, ulasan } = require("../../models");
 
-exports.getFilms = async () => {
+exports.getFilms = async (name) => {
   try {
     // Fetch films with eager loading for genre and ulasan models
     const data = await film.findAll({
       include: [{ model: genre }, { model: ulasan }],
     });
 
+    let filteredData = data;
+    if (name) {
+      const lowerCaseName = name.toLowerCase();
+      filteredData = data.filter((film) =>
+        film.nama_film.toLowerCase().includes(lowerCaseName)
+      );
+    }
+
+    // Return the filtered data
+    return filteredData;
     // Return the fetched data
     return data;
   } catch (error) {
