@@ -17,9 +17,9 @@ jobs:
           SECRETS="${{ secrets.GCP_ENV }}"
           echo "$SECRETS" | tr ';' '\n' >> .env
 
-      - name: Migrate and Clear Data
+      - name: Migrate
         run: |
-          npm run migrate:reset
+          npm run db:migrate
 
       - id: "auth"
         uses: "google-github-actions/auth@v2"
